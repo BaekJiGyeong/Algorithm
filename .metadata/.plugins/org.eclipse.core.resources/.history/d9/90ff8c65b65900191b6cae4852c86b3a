@@ -1,0 +1,30 @@
+public class Stack {
+	
+	private Object[] object ;
+	private int size ;
+	
+	public Stack () {
+		this.object = new Object[0];
+		this.size = 0;
+	}
+	
+	public static boolean push(Object object) {
+		return false;
+	}
+	
+	public static Object pop () {
+		return null;
+	}
+	
+	public static boolean isEmpty() {
+		return false;
+	}
+	
+	public static Object peek() {
+		return null;
+	}
+	
+	public static int size() {
+		return 1;
+	}
+}

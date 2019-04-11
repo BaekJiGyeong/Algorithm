@@ -1,0 +1,50 @@
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Scanner;
+
+public class Combination {
+	static int N = 0;
+	static int R = 0;
+	public static void main(String[] args) {
+		
+		Scanner sc = new Scanner(System.in);
+		N = sc.nextInt();
+		R = sc.nextInt();
+		
+		// 1~N 까지 사용
+		int arr[] = new int[N];
+		for(int i=0; i<N; i++) {
+			arr[i] =sc.nextInt();
+		}
+		
+		// 순열 method 시작
+		combination(arr);
+	}
+	static void combination(int[] arr) {
+		
+		String pre="";
+		String now="";
+		Queue q = new LinkedList<String>();
+		
+		// for문을 돌면서  
+		for(int i=0; i<arr.length; i++) {
+			for(int j=0; j<arr.length; j++) {
+				for(int k=0; k<arr.length; k++) {
+					now = ""+arr[i]+arr[j]+arr[k];
+					if(pre!=null&&Integer.parseInt(pre)>Integer.parseInt(now)) break;
+					if(!pre.equals(now)) {
+						q.add(now);
+					}
+					pre = now;
+//					System.out.println(now);
+				}
+			}
+		}
+		
+		System.out.println(q.size());
+		for (Object ob : q) {
+			System.out.println(ob);
+		}
+		
+	}
+}

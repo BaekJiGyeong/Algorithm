@@ -1,0 +1,33 @@
+public class Stack {
+	
+	private Object[] object ;
+	private int size ;
+	
+	public Stack () {
+		this.object = new Object[0];
+		this.size = 0;
+	}
+	
+	public boolean push(Object object) {
+		return false;
+	}
+	
+	public Object pop () {
+		return null;
+	}
+	
+	public boolean isEmpty() {
+		if(this.size==0) {
+			return true;
+		}
+		else return false;
+	}
+	
+	public Object peek() {
+		return null;
+	}
+	
+	public int size() {
+		return 1;
+	}
+}

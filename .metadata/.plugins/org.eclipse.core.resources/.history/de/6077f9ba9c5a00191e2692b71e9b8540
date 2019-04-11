@@ -1,0 +1,99 @@
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Scanner;
+
+/*
+ * <순열>
+ * N개의 숫자를 입력으로 받아 그 중 M개를 선택하는 가짓수와 M개를 선택했을 때의 결과값을 나열하시오.
+ * 
+ * <입력예시>
+5 3
+4 5 5 6 7
+ */
+
+public class Permutation {
+	static int N = 0;
+	static int R = 0;
+	public static void main(String[] args) {
+		
+		Scanner sc = new Scanner(System.in);
+		N = sc.nextInt();
+		R = sc.nextInt();
+		
+		// 1~N 까지 사용
+		Stack s = new Stack();
+		s.push(sc.nextInt());
+		
+		// 전 숫자와 중복되지 않는 수만 stack에 담음
+		int temp = 0;
+		for(int i=0; i<N-1; i++) {
+			temp=sc.nextInt();
+			if((int)s.peek()!=temp) {
+				s.push(temp);
+			}
+		}
+		
+		// 하나씩 for문돌려서 arr에 담음
+		int arr[] = new int[s.size()];
+		for(int i=s.size()-1; i>=0; i--) {
+			arr[i] = (int)s.pop();
+		}
+		
+		
+		// 순열 method 시작
+		permutation(arr);
+		
+		
+	}
+	
+	static void permutation(int[] arr) {
+		
+		for(int i=0;i<(1<<arr.length);i++) {
+			if(Integer.bitCount(i)==R) {
+				
+				// arr에서 1이 R개 출력되는 수를 찾는다				
+				System.out.println(Integer.toBinaryString(i));
+				
+				// 1이 있는 자리를 arr[0] arr[1] arr[2] arr[3] 로 표현한다.
+			}
+		}
+	}
+}
+
+/* 결과값
+ * 
+33
+4 5 5 
+4 5 6 
+4 5 7 
+4 6 5 
+4 6 7 
+4 7 5 
+4 7 6 
+5 4 5 
+5 4 6 
+5 4 7 
+5 5 4 
+5 5 6 
+5 5 7 
+5 6 4 
+5 6 5 
+5 6 7 
+5 7 4 
+5 7 5 
+5 7 6 
+6 4 5 
+6 4 7 
+6 5 4 
+6 5 5 
+6 5 7 
+6 7 4 
+6 7 5 
+7 4 5 
+7 4 6 
+7 5 4 
+7 5 5 
+7 5 6 
+7 6 4 
+7 6 5 
+ */

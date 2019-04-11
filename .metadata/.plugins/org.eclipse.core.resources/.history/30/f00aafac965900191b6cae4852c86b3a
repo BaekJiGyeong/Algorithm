@@ -1,0 +1,26 @@
+
+public class Stack {
+	public static void main(String[] args) {
+		Object ob = new Object();
+	}
+	
+	public static boolean push(Object object) {
+		return false;
+	}
+	
+	public static Object pop () {
+		return null;
+	}
+	
+	public static boolean isEmpty() {
+		return false;
+	}
+	
+	public static Object peek() {
+		return null;
+	}
+	
+	public static int size() {
+		return 1;
+	}
+}

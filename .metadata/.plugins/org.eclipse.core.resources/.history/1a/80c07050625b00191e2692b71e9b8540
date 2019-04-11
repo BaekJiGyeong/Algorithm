@@ -1,0 +1,70 @@
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+import java.util.Scanner;
+
+public class PermComb_1 {
+	static int N = 0;
+	static int R = 0;
+	static Queue combList = new LinkedList<String>();
+	static Queue permList = new LinkedList<String>();
+	
+	public static void main(String[] args) {
+		
+		Scanner sc = new Scanner(System.in);
+		N = sc.nextInt();
+		R = sc.nextInt();
+		
+		// 1~N 까지 사용
+		int arr[] = new int[N];
+		for(int i=0; i<N; i++) {
+			arr[i] =sc.nextInt();
+		}
+		
+		// (조합) 중복되지 않는 수 조합을 찾는다
+		combination(arr, R, 0, 0, new int[3]);
+		
+		String[] combArr = new String[combList.size()];
+		int idx = 0;
+		while(!combList.isEmpty()) {
+			System.out.println(combList.peek());
+			combArr[idx++] = (String) combList.poll();
+		}
+		
+		// (순열) 조합 리스트에서 나올수 있는 순열을 출력한다.
+		permutation(combArr);	
+		
+		
+	}
+	
+	/*순열*/
+	private static void permutation(String[] arr) {
+		
+	}
+	
+	/*조합*/
+	private static void combination(int[] arr, int r, int idx, int depth, int[] comb) {
+		
+		// for
+		// idx = depth~(N-R+depth) // 0 : 0~2(5-3+0) / 1 : 1~3 / 2: 2~4
+		for(int i= idx; i<=N-R+depth; i++) {
+			// comb 배열에 idx 값을 담음
+			comb[depth] = arr[i];
+			// if depth = r-1  일 경우 combArr.add()
+			if(depth==R-1) {
+				String combNum = "";
+				for(int n=0; n<r; n++) {
+					combNum = combNum + comb[n];
+				}
+				combList.add(combNum);
+			}
+			else {
+				// 이전 배열과 같은 값이면 combination 함수를 계속 타지 않음
+				if(i==0) combination(arr, r, i+1, depth+1, comb);
+				else {
+					if(arr[i]!=arr[i-1]) combination(arr, r, i+1, depth+1, comb);
+				}
+			}
+		}
+	}
+}
