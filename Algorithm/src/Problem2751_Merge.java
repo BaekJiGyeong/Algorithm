@@ -27,16 +27,6 @@ public class Problem2751_Merge {
 		if(arr.length == 1) {
 			return arr;
 		}
-		if(arr.length ==2) {
-			// 두개면 크기 비교해서 리턴
-			if(arr[0]>arr[1]) {
-				int temp = arr[0];
-				arr[0] = arr[1];
-				arr[1] = temp;
-			}
-			
-			return arr;
-		}
 		else { // 아니면 또 나눠줌
 			
 			int midA = (int)arr.length/2;
@@ -51,8 +41,8 @@ public class Problem2751_Merge {
 			arrA = mergeSort(arrA);
 			arrB = mergeSort(arrB);
 			
+			// 나눈 배열이 mergesort 를 타고 나오면 합쳐줌
 			arr = mergeOperator(arrA, arrB);
-			
 		}
 		
 		return arr;
